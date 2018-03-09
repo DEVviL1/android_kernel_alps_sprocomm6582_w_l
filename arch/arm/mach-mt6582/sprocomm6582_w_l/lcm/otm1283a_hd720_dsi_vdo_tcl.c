@@ -62,7 +62,7 @@ static LCM_UTIL_FUNCS lcm_util ;
 
 #define   LCM_DSI_CMD_MODE						0
 
-struct LCM_setting_table_V3 {
+struct LCM_setting_table {
     unsigned cmd;
     unsigned char count;
     unsigned char para_list[64];
@@ -70,7 +70,7 @@ struct LCM_setting_table_V3 {
 
 
 
-static LCM_setting_table_V3 lcm_initialization_setting[] = {
+static LCM_setting_table lcm_initialization_setting[] = {
     { 0x15, 0x00, 0x01, {0x00}},
     { 0x39, 0xFF, 0x03, {0x12, 0x83, 0x01}},
     { 0x15, 0x00, 0x01, {0x80}},
@@ -293,7 +293,6 @@ static void lcm_init(void)
 {
   SET_RESET_PIN(0);
   MDELAY(20);
-
   SET_RESET_PIN(1);
   MDELAY(20);
 
@@ -307,7 +306,6 @@ static void lcm_suspend(void)
 
   data_array[0] = 0x00280500;
   dsi_set_cmdq(data_array, 1, 1);
-
   data_array[0] = 0x00100500;
   dsi_set_cmdq(data_array, 1, 1);
 }
@@ -318,7 +316,6 @@ static void lcm_resume(void)
 
   data_array[0] = 0x00290500;
   dsi_set_cmdq(data_array, 1, 1);
-
   data_array[0] = 0x00110500;
   dsi_set_cmdq(data_array, 1, 1);
 }
