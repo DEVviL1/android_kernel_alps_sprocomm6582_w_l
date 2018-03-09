@@ -293,7 +293,6 @@ static void lcm_init(void)
 {
   SET_RESET_PIN(0);
   MDELAY(20);
-
   SET_RESET_PIN(1);
   MDELAY(20);
 
@@ -307,7 +306,6 @@ static void lcm_suspend(void)
 
   data_array[0] = 0x00280500;
   dsi_set_cmdq(data_array, 1, 1);
-
   data_array[0] = 0x00100500;
   dsi_set_cmdq(data_array, 1, 1);
 }
@@ -318,7 +316,6 @@ static void lcm_resume(void)
 
   data_array[0] = 0x00290500;
   dsi_set_cmdq(data_array, 1, 1);
-
   data_array[0] = 0x00110500;
   dsi_set_cmdq(data_array, 1, 1);
 }
