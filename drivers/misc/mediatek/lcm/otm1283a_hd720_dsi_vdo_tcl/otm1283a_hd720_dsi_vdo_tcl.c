@@ -62,7 +62,7 @@ static LCM_UTIL_FUNCS lcm_util ;
 
 #define   LCM_DSI_CMD_MODE						0
 
-struct LCM_setting_table_V3 {
+struct LCM_setting_table {
     unsigned cmd;
     unsigned char count;
     unsigned char para_list[64];
@@ -70,7 +70,7 @@ struct LCM_setting_table_V3 {
 
 
 
-static LCM_setting_table_V3 lcm_initialization_setting[] = {
+static LCM_setting_table lcm_initialization_setting[] = {
     { 0x15, 0x00, 0x01, {0x00}},
     { 0x39, 0xFF, 0x03, {0x12, 0x83, 0x01}},
     { 0x15, 0x00, 0x01, {0x80}},
