@@ -62,13 +62,6 @@ static LCM_UTIL_FUNCS lcm_util ;
 
 #define   LCM_DSI_CMD_MODE						0
 
-struct LCM_setting_table {
-    unsigned cmd;
-    unsigned char count;
-    unsigned char para_list[64];
-};
-
-
 
 static LCM_setting_table lcm_initialization_setting[] = {
     { 0x15, 0x00, 0x01, {0x00}},
@@ -202,32 +195,6 @@ static LCM_setting_table lcm_initialization_setting[] = {
     { 0x05, 0x29, 0x00, {}},
     { 0x00, 0xFF, 0x14, {0x00}}
 };
-
-static void push_table(struct LCM_setting_table *table, unsigned int count, unsigned char force_update)
-{
-	unsigned int i;
-
-	for(i = 0; i < count; i++) {
-
-		unsigned cmd;
-		cmd = table[i].cmd;
-
-	switch (cmd) {
-
-		case REGFLAG_DELAY :
- 			MDELAY(table[i].count);
-   			break;
-
-		case REGFLAG_END_OF_TABLE :
-   			break;
-
-		default:
-			dsi_set_cmdq_V2(cmd, table[i].count, table[i].para_list, force_update);
-			MDELAY(2);
-		}
-	}
-
-}
 
 // ---------------------------------------------------------------------------
 //  LCM Driver Implementations
