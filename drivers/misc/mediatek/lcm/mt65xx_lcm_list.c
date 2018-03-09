@@ -18,6 +18,7 @@
 #define LCD_DEBUG(fmt)  printk(fmt)
 #endif
 extern LCM_DRIVER KD079D1_MIPI4LVDS_lcm_drv;
+extern LCM_DRIVER otm1283a_hd720_dsi_vdo_tcl_lcm_drv;
 extern LCM_DRIVER nt51021b_mipi_dsi_lcm_drv;
 extern LCM_DRIVER otm1282a_hd720_dsi_vdo_60hz_lcm_drv;
 extern LCM_DRIVER otm1282a_hd720_dsi_vdo_lcm_drv;
@@ -205,6 +206,11 @@ LCM_DRIVER* lcm_driver_list[] =
 #if defined(KD079D1_MIPI4LVDS)
 	&KD079D1_MIPI4LVDS_lcm_drv,
 #endif
+	
+//add by yuvraj	
+#if defined(OTM1283A_HD720_DSI_VDO_TCL)
+	&otm1283a_hd720_dsi_vdo_tcl_lcm_drv,
+#endif	
 #if defined(NT51021B_MIPI_DSI)
 	&nt51021b_mipi_dsi_lcm_drv,
 #endif	
