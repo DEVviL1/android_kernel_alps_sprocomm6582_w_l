@@ -193,7 +193,7 @@ static LCM_setting_table_V3 lcm_initialization_setting[] = {
     { 0x05, 0x11, 0, {}},
     { REGFLAG_ESCAPE_ID,REGFLAG_DELAY_MS_V3, 120, {}},
     { 0x05, 0x29, 0, {}},
-    { REGFLAG_ESCAPE_ID,REGFLAG_DELAY_MS_V3, 20, {}}
+    { REGFLAG_ESCAPE_ID,REGFLAG_DELAY_MS_V3, 20, {}},
 
 };
 
@@ -282,12 +282,13 @@ static void lcm_resume(void)
 {
   unsigned int data_array[16];
 
-  data_array[0] = 0x00290500;
+  data_array[0] = 0x00290500; //sleepout
   dsi_set_cmdq(data_array, 1, 1);
-  data_array[0] = 0x00110500;
+  data_array[0] = 0x00110500; //sleepin
   dsi_set_cmdq(data_array, 1, 1);
 }
 
+#if (LCM_DSI_CMD_MODE)	
 static void lcm_update(unsigned int x, unsigned int y,
                        unsigned int width, unsigned int height)
 {
@@ -321,7 +322,8 @@ static void lcm_update(unsigned int x, unsigned int y,
 	dsi_set_cmdq(data_array, 1, 0);
 
 }
-
+#endif
+	
 static unsigned int lcm_compare_id(void)
 {
   return 1;
