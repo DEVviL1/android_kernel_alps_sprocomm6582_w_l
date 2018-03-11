@@ -190,9 +190,9 @@ static LCM_setting_table_V3 lcm_initialization_setting[] = {
     { 0x15, 0x29, 1, {0x00}},
     { 0x05, 0x35, 0, {}},
     { 0x05, 0x11, 0, {}},
-    { REGFLAG_ESCAPE_ID, REGFLAG_DELAY_MS_V3, 120, {}},
+    { 0xFF, 120, {}},
     { 0x05, 0x29, 0, {}},
-    { REGFLAG_ESCAPE_ID, REGFLAG_DELAY_MS_V3, 20, {}},
+    { 0xFF, 20, {}}
 
 };
 
