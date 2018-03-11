@@ -191,9 +191,9 @@ static LCM_setting_table_V3 lcm_initialization_setting[] = {
     { 0x15, 0x29, 1, {0x00}},
     { 0x05, 0x35, 0, {}},
     { 0x05, 0x11, 0, {}},
-    { REGFLAG_DELAY, 120, {}},
+    { REGFLAG_ESCAPE_ID,REGFLAG_DELAY_MS_V3, 120, {}},
     { 0x05, 0x29, 0, {}},
-    { REGFLAG_DELAY, 20, {}},
+    { REGFLAG_ESCAPE_ID,REGFLAG_DELAY_MS_V3, 20, {}},
 
 };
 
@@ -272,9 +272,9 @@ static void lcm_suspend(void)
 {
   unsigned int data_array[16];
 
-  data_array[0] = 0x00280500;
+  data_array[0] = 0x00280500; // Display Off
   dsi_set_cmdq(data_array, 1, 1);
-  data_array[0] = 0x00100500;
+  data_array[0] = 0x00100500; // Sleep In
   dsi_set_cmdq(data_array, 1, 1);
 }
 
@@ -282,9 +282,9 @@ static void lcm_resume(void)
 {
   unsigned int data_array[16];
 
-  data_array[0] = 0x00290500; //sleepout
+  data_array[0] = 0x00290500;
   dsi_set_cmdq(data_array, 1, 1);
-  data_array[0] = 0x00110500; //sleepin
+  data_array[0] = 0x00110500;
   dsi_set_cmdq(data_array, 1, 1);
 }
 
